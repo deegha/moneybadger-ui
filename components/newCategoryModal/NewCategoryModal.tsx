@@ -3,10 +3,11 @@
 import { useForm, Controller } from "react-hook-form";
 import { X } from "lucide-react";
 import { IconPicker, ColorPicker, InputCurrency, Button } from "@/components";
-import { CURRENCY_SYMBOL } from "@/lib/contants";
+import { CURRENCY_SYMBOL } from "@/lib/constants";
 import { useState } from "react";
 import { createCategory } from "@/lib/services/categories";
 import { useNotificationStore } from "@/store/notificationStore";
+import { mutate } from "swr";
 
 interface CategoryForm {
   name: string;
@@ -24,7 +25,13 @@ export const NewCategoryModal = ({
 }) => {
   const { showNotification } = useNotificationStore();
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const { register, handleSubmit, control } = useForm<CategoryForm>({
+  const {
+    register,
+    handleSubmit,
+    control,
+    reset,
+    formState: { isValid, errors },
+  } = useForm<CategoryForm>({
     defaultValues: {
       name: "",
       budget: "",
@@ -36,23 +43,24 @@ export const NewCategoryModal = ({
   if (!isOpen) return null;
 
   const onSubmit = async (data: CategoryForm) => {
-    console.log("Saving Category:", data);
-
     try {
       setIsSubmitting(true);
-      const response = await createCategory({
+      await createCategory({
         name: data.name,
         colorHex: data.color,
-        icon: data.color,
+        icon: data.icon,
         month: 3,
         year: 2026,
         limitAmount: data.budget,
       });
-      console.log("dafsdfdsfsd", response);
+
       showNotification({
         message: "Category created successfully",
         type: "success",
       });
+
+      reset();
+      mutate("fetch-categories");
 
       setIsSubmitting(false);
     } catch {
@@ -95,7 +103,7 @@ export const NewCategoryModal = ({
                 Category Name
               </label>
               <input
-                {...register("name")}
+                {...register("name", { required: true })}
                 placeholder="e.g. Groceries"
                 className="w-full bg-neutral-50 border border-neutral-100 rounded-xl px-4 py-3 text-sm input-atelier"
               />
@@ -105,6 +113,7 @@ export const NewCategoryModal = ({
             <Controller
               name="budget"
               control={control}
+              rules={{ required: true }}
               render={({ field }) => (
                 <InputCurrency
                   label="Monthly Budget"
@@ -140,7 +149,9 @@ export const NewCategoryModal = ({
             <Button type="button" onClick={onClose} variant="ghost">
               Cancel
             </Button>
-            <Button type="submit">Create Category</Button>
+            <Button type="submit" disabled={!isValid || isSubmitting}>
+              Create Category
+            </Button>
           </div>
         </form>
       </div>

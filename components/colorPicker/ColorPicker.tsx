@@ -1,12 +1,6 @@
 // components/ui/ColorPicker.tsx
 import { Check } from "lucide-react";
-
-const COLORS = [
-  { id: "emerald", hex: "bg-emerald-800" },
-  { id: "rose", hex: "bg-rose-600" },
-  { id: "slate", hex: "bg-slate-600" },
-  { id: "maroon", hex: "bg-red-950" },
-];
+import { COLORS } from "@/lib/constants";
 
 export const ColorPicker = ({
   selected,
@@ -29,7 +23,7 @@ export const ColorPicker = ({
         >
           {selected === color.id && (
             <>
-              <div className="absolute inset-[-4px] border-2 border-emerald-800 rounded-full" />
+              <div className="absolute -inset-1 border-2 border-emerald-800 rounded-full" />
               <Check className="w-5 h-5 text-white" />
             </>
           )}

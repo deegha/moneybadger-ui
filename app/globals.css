@@ -9,10 +9,20 @@
   --tertiary: #f43f5e; /* Expense Red */
   --border: #e2e8f0;
   --radius: 0.75rem;
+
+  /* --- Category Specific Colors (Tailwind 4 System) --- */
+  --cat-emerald: #065f46; /* Food/Income */
+  --cat-rose: #e11d48; /* Essentials */
+  --cat-slate: #475569; /* General */
+  --cat-maroon: #450a0a; /* Rent/Housing */
+  --cat-amber: #b45309; /* Utilities/Warning */
+  --cat-indigo: #4338ca; /* Education/Bills */
+  --cat-purple: #7e22ce; /* Subscriptions/Entertainment */
+  --cat-cyan: #0e7490; /* Health/Travel */
 }
 
 @theme {
-  /* This block replaces tailwind.config.js */
+  /* Core Theme Mapping */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-primary: var(--primary);
@@ -20,7 +30,17 @@
   --color-tertiary: var(--tertiary);
   --color-border: var(--border);
 
-  /* Custom Transitions for the Weekly/Monthly Toggle */
+  /* Category Color Mapping */
+  --color-cat-emerald: var(--cat-emerald);
+  --color-cat-rose: var(--cat-rose);
+  --color-cat-slate: var(--cat-slate);
+  --color-cat-maroon: var(--cat-maroon);
+  --color-cat-amber: var(--cat-amber);
+  --color-cat-indigo: var(--cat-indigo);
+  --color-cat-purple: var(--cat-purple);
+  --color-cat-cyan: var(--cat-cyan);
+
+  /* Transitions & Animations */
   --animate-fade-in: fade-in 0.3s ease-out;
   --animate-slide-up: slide-up 0.4s ease-out;
 
@@ -48,24 +68,10 @@
   body {
     background-color: var(--background);
     color: var(--foreground);
-    /* Standard CSS for borders to avoid the 'unknown utility' error */
     border-color: var(--border);
   }
-}
 
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
-/* Hide spinners for Firefox */
-input[type="number"] {
-  -moz-appearance: textfield;
-}
-
-@layer base {
-  /* 1. Remove the default browser outlines globally */
+  /* Global Outline Reset */
   input,
   textarea,
   select {
@@ -74,13 +80,25 @@ input[type="number"] {
   }
 }
 
-/* 2. Create a reusable 'Atelier' focus state */
+/* --- Utility Classes --- */
+
+/* Hide Spinners for Chrome/Safari/Edge */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Hide Spinners for Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+/* Atelier Design System Focus State */
 .input-atelier {
   @apply transition-all duration-200 border border-neutral-100;
 }
 
 .input-atelier:focus {
-  /* A soft indigo glow rather than a hard line */
-  @apply border-indigo-500/40 ring-4 ring-indigo-500/5;
-  background-color: white;
+  @apply border-indigo-500/40 ring-4 ring-indigo-500/5 bg-white;
 }

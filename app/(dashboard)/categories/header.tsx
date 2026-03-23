@@ -12,7 +12,7 @@ export function Header() {
           <Button onClick={() => setIsModalOpen(true)}>New Category</Button>
         }
       />
-      <div className="p-10 md:p-16">
+      <div>
         <NewCategoryModal
           isOpen={isModalOpen}
           onClose={() => setIsModalOpen(false)}

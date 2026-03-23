@@ -15,10 +15,25 @@ export const InputCurrency = ({
   onValueChange,
   ...props
 }: InputCurrencyProps) => {
+  const formatDisplayValue = (val: string) => {
+    if (!val) return "";
+
+    const [integer, decimal] = val.split(".");
+
+    const formattedInteger = new Intl.NumberFormat("en-US").format(
+      Number(integer.replace(/,/g, "")),
+    );
+
+    return decimal !== undefined
+      ? `${formattedInteger}.${decimal}`
+      : formattedInteger;
+  };
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const val = e.target.value;
-    if (val === "" || /^\d*\.?\d*$/.test(val)) {
-      onValueChange(val);
+    const rawValue = e.target.value.replace(/,/g, "");
+
+    if (rawValue === "" || /^\d*\.?\d*$/.test(rawValue)) {
+      onValueChange(rawValue);
     }
   };
 
@@ -40,9 +55,9 @@ export const InputCurrency = ({
           {...props}
           type="text"
           inputMode="decimal"
-          value={value}
+          value={formatDisplayValue(value)}
           onChange={handleChange}
-          style={{ paddingLeft: paddingLeft }} // Inline style to handle dynamic width
+          style={{ paddingLeft: paddingLeft }}
           className="w-full bg-neutral-50 border border-neutral-100 rounded-xl pr-4 py-3 text-sm input-atelier"
           placeholder="0.00"
         />

@@ -24,3 +24,28 @@ export function createCategory(data: CreateCategoryPayload) {
     },
   });
 }
+
+export interface Category {
+  id: string;
+  user_id: string;
+  name: string;
+  icon: string;
+  color_hex: string;
+  created_at: string;
+  budget_limit: number;
+  total_spent: number;
+  spent_percentage: number;
+}
+
+export function fetchCategories() {
+  const res = serviceHandler<{
+    data: Category[];
+    message: string;
+  }>({
+    method: "GET",
+    baseURL: process.env.NEXT_PUBLIC_API_BASE_URL || "http://localhost:3000",
+    resource: "/v1/categories",
+  });
+
+  return res;
+}

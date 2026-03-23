@@ -136,7 +136,6 @@ export const NewTransactionModal = ({
           </div>
         </form>
 
-        {/* Footer */}
         <div className="p-6 bg-neutral-50/50 flex items-center justify-end gap-4 border-t border-neutral-50">
           <Button type="button" onClick={onClose} variant="ghost">
             Cancel
