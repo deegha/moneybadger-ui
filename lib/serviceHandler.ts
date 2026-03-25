@@ -35,11 +35,10 @@ export const serviceHandler = async <TResponse, TBody = undefined>({
     credentials: "include",
   });
 
-  if (response.status === 401) {
-    throw Error("Unauthorized");
+  if (!response.ok) {
+    throw Error("Something went wrong, check the logs");
   }
 
-  // 2. Default JSON handling
   const data = await response.json();
 
   if (data.error === true) {

@@ -14,7 +14,7 @@ export function Header() {
           </Button>
         }
       />
-      <div className="p-10 md:p-16">
+      <div>
         <NewTransactionModal
           isOpen={isNewTransactionOpen}
           onClose={() => setIsNewTransactionOpen(false)}

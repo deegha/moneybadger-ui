@@ -1,5 +1,5 @@
 "use client";
-import { COLORS, CURRENCY_SYMBOL } from "@/lib/constants";
+import { CURRENCY_SYMBOL } from "@/lib/constants";
 import { IconComponent } from "@/components";
 
 interface CategoryCardProps {

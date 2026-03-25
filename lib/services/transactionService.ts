@@ -1,26 +1,42 @@
 import { serviceHandler } from "../serviceHandler";
 
-interface CreateTransactionPayload {
-  name: string;
-  icon: string;
-  colorHex: string;
-  month: number;
-  year: number;
-  limitAmount: string;
+export type TransactionType = "income" | "expense";
+
+export interface Transaction {
+  categoryId: string;
+  amount: number;
+  type: TransactionType;
+  description: string;
+  merchantName?: string;
+  date: string;
+  isRecurring: boolean;
+  createdAt?: string;
 }
 
-export function createCategory(data: CreateTransactionPayload) {
-  return serviceHandler({
+export interface CreateTransactionPayload {
+  category_id: string;
+  amount: number;
+  type: TransactionType;
+  description: string;
+  merchant_name?: string;
+  date: string;
+  is_recurring: boolean;
+  created_at?: string;
+}
+
+export function createTransaction(data: Transaction) {
+  return serviceHandler<{}, CreateTransactionPayload>({
     method: "POST",
     baseURL: process.env.NEXT_PUBLIC_API_BASE_URL || "http://localhost:3000",
-    resource: "/v1/transaction",
+    resource: "/v1/transactions",
     body: {
-      name: data.name,
-      icon: data.icon,
-      color_hex: data.colorHex,
-      month: data.month,
-      year: data.year,
-      limit_amount: parseFloat(data.limitAmount),
+      category_id: data.categoryId,
+      amount: data.amount,
+      type: data.type,
+      description: data.description,
+      merchant_name: data.merchantName,
+      date: data.date,
+      is_recurring: data.isRecurring,
     },
   });
 }

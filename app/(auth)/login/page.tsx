@@ -7,8 +7,10 @@ import { useNotificationStore } from "@/store/notificationStore";
 import { Input, PasswordInput, Checkbox, Button } from "@/components";
 
 import { loginUser } from "@/lib/services/userService";
+import { useRouter } from "next/navigation";
 
 export default function LoginPage() {
+  const router = useRouter();
   const { showNotification } = useNotificationStore();
   const [formData, setFormData] = React.useState({
     email: "",
@@ -25,6 +27,8 @@ export default function LoginPage() {
         message: "Login successful! Redirecting...",
         type: "success",
       });
+
+      router.push("dashboard");
     } catch (error) {
       showNotification({
         message: "Invalid email or password.",

@@ -13,3 +13,5 @@ export { ColorPicker } from "./colorPicker/ColorPicker";
 export { NewCategoryModal } from "./newCategoryModal/NewCategoryModal";
 export { InputCurrency } from "./inputCurrency/inputCurrency";
 export { IconComponent } from "./iconComponent/iconComponent";
+export { SummaryCard } from "./summaryCard/summaryCard";
+export { InnerContainer } from "./innerContainer/innerContainer";
