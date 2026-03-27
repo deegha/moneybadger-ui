@@ -8,17 +8,25 @@
   --secondary: #10b981; /* Income Green */
   --tertiary: #f43f5e; /* Expense Red */
   --border: #e2e8f0;
-  --radius: 0.75rem;
+  --radius: 0.375rem; /* Updated to rounded-md (6px) per your request */
 
   /* --- Category Specific Colors (Tailwind 4 System) --- */
-  --cat-emerald: #065f46; /* Food/Income */
-  --cat-rose: #e11d48; /* Essentials */
-  --cat-slate: #475569; /* General */
-  --cat-maroon: #450a0a; /* Rent/Housing */
-  --cat-amber: #b45309; /* Utilities/Warning */
-  --cat-indigo: #4338ca; /* Education/Bills */
-  --cat-purple: #7e22ce; /* Subscriptions/Entertainment */
-  --cat-cyan: #0e7490; /* Health/Travel */
+  --cat-emerald: #065f46;
+  --cat-rose: #be123c;
+  --cat-slate: #475569;
+  --cat-maroon: #991b1b;
+  --cat-amber: #b45309;
+  --cat-indigo: #3730a3;
+  --cat-purple: #6b21a8;
+  --cat-cyan: #0e7490;
+
+  /* Newly Added colors to match your COLORS array */
+  --cat-blue: #1d4ed8;
+  --cat-orange: #ea580c;
+  --cat-teal: #0d9488;
+  --cat-fuchsia: #a21caf;
+  --cat-lime: #4d7c0f;
+  --cat-pink: #db2777;
 }
 
 @theme {
@@ -40,7 +48,15 @@
   --color-cat-purple: var(--cat-purple);
   --color-cat-cyan: var(--cat-cyan);
 
-  /* Transitions & Animations */
+  /* Mapping for newly added colors */
+  --color-cat-blue: var(--cat-blue);
+  --color-cat-orange: var(--cat-orange);
+  --color-cat-teal: var(--cat-teal);
+  --color-cat-fuchsia: var(--cat-fuchsia);
+  --color-cat-lime: var(--cat-lime);
+  --color-cat-pink: var(--cat-pink);
+
+  /* Animations */
   --animate-fade-in: fade-in 0.3s ease-out;
   --animate-slide-up: slide-up 0.4s ease-out;
 
@@ -81,22 +97,8 @@
 }
 
 /* --- Utility Classes --- */
-
-/* Hide Spinners for Chrome/Safari/Edge */
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
-/* Hide Spinners for Firefox */
-input[type="number"] {
-  -moz-appearance: textfield;
-}
-
-/* Atelier Design System Focus State */
 .input-atelier {
-  @apply transition-all duration-200 border border-neutral-100;
+  @apply transition-all duration-200 border border-neutral-100 rounded-md;
 }
 
 .input-atelier:focus {

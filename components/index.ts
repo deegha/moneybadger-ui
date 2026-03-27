@@ -15,3 +15,6 @@ export { InputCurrency } from "./inputCurrency/inputCurrency";
 export { IconComponent } from "./iconComponent/iconComponent";
 export { SummaryCard } from "./summaryCard/summaryCard";
 export { InnerContainer } from "./innerContainer/innerContainer";
+export { DataTable } from "./dataTable/dataTable";
+export type { Column } from "./dataTable/dataTable";
+export { Pagination } from "./pagination/pagination";

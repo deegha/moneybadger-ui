@@ -65,12 +65,18 @@ export const ICONS = [
 ];
 
 export const COLORS = [
-  { id: "emerald", hex: "bg-cat-emerald" },
-  { id: "rose", hex: "bg-cat-rose" },
-  { id: "slate", hex: "bg-cat-slate" },
-  { id: "maroon", hex: "bg-cat-maroon" },
-  { id: "amber", hex: "bg-cat-amber" },
-  { id: "indigo", hex: "bg-cat-indigo" },
-  { id: "purple", hex: "bg-cat-purple" },
-  { id: "cyan", hex: "bg-cat-cyan" },
+  { id: "emerald", hex: "bg-cat-emerald", colorHex: "#065f46" },
+  { id: "rose", hex: "bg-cat-rose", colorHex: "#be123c" },
+  { id: "slate", hex: "bg-cat-slate", colorHex: "#475569" },
+  { id: "maroon", hex: "bg-cat-maroon", colorHex: "#991b1b" },
+  { id: "amber", hex: "bg-cat-amber", colorHex: "#b45309" },
+  { id: "indigo", hex: "bg-cat-indigo", colorHex: "#3730a3" },
+  { id: "purple", hex: "bg-cat-purple", colorHex: "#6b21a8" },
+  { id: "cyan", hex: "bg-cat-cyan", colorHex: "#0e7490" },
+  { id: "blue", hex: "bg-cat-blue", colorHex: "#1d4ed8" },
+  { id: "orange", hex: "bg-cat-orange", colorHex: "#ea580c" },
+  { id: "teal", hex: "bg-cat-teal", colorHex: "#0d9488" },
+  { id: "fuchsia", hex: "bg-cat-fuchsia", colorHex: "#a21caf" },
+  { id: "lime", hex: "bg-cat-lime", colorHex: "#4d7c0f" },
+  { id: "pink", hex: "bg-cat-pink", colorHex: "#db2777" },
 ];

@@ -1,3 +1,14 @@
+import { InnerContainer } from "@/components";
+import { TransactionTable } from "./transactionsTable";
+import { Header } from "./header";
+
 export default function AddTransaction() {
-  return <div className="bg-primary size-25">dafsdf</div>;
+  return (
+    <div className="w-full">
+      <Header />
+      <InnerContainer>
+        <TransactionTable />
+      </InnerContainer>
+    </div>
+  );
 }

@@ -13,7 +13,7 @@ export const ColorPicker = ({
     <label className="text-[10px] font-bold text-neutral-400 uppercase tracking-widest">
       Category Tag Color
     </label>
-    <div className="flex items-center gap-4">
+    <div className="flex items-center gap-4 flex-wrap">
       {COLORS.map((color) => (
         <button
           key={color.id}

@@ -96,11 +96,6 @@ export const NewTransactionModal = ({
 
   const onSubmit = async (data: TransactionFormValues) => {
     try {
-      console.log("Submitting Clean Data:", {
-        ...data,
-        amount: parseFloat(data.amount),
-      });
-
       const formattedDate = new Date(data.date).toISOString().split("T")[0];
 
       await createTransaction({
@@ -165,11 +160,10 @@ export const NewTransactionModal = ({
               <div className="flex p-1 bg-neutral-100 rounded-xl w-full max-w-[320px]">
                 {/* Expense (Going Out) */}
                 <label
-                  className={`flex-1 flex items-center justify-center gap-2.5 py-2.5 px-4 rounded-lg cursor-pointer transition-all duration-200 ${
-                    transactionType === "expense"
+                  className={`flex-1 flex items-center justify-center gap-2.5 py-2.5 px-4 rounded-lg cursor-pointer transition-all duration-200 ${transactionType === "expense"
                       ? "bg-white shadow-sm text-rose-600"
                       : "text-neutral-500 hover:text-neutral-700"
-                  }`}
+                    }`}
                 >
                   <input
                     {...register("type")}
@@ -183,11 +177,10 @@ export const NewTransactionModal = ({
 
                 {/* Income (Coming In) */}
                 <label
-                  className={`flex-1 flex items-center justify-center gap-2.5 py-2.5 px-4 rounded-lg cursor-pointer transition-all duration-200 ${
-                    transactionType === "income"
+                  className={`flex-1 flex items-center justify-center gap-2.5 py-2.5 px-4 rounded-lg cursor-pointer transition-all duration-200 ${transactionType === "income"
                       ? "bg-white shadow-sm text-emerald-600"
                       : "text-neutral-500 hover:text-neutral-700"
-                  }`}
+                    }`}
                 >
                   <input
                     {...register("type")}
@@ -209,11 +202,10 @@ export const NewTransactionModal = ({
               <div className="flex flex-col items-center w-full">
                 <div className="flex items-center justify-center gap-2 w-full">
                   <span
-                    className={`text-4xl font-light transition-colors ${
-                      transactionType === "income"
+                    className={`text-4xl font-light transition-colors ${transactionType === "income"
                         ? "text-emerald-300"
                         : "text-rose-300"
-                    }`}
+                      }`}
                   >
                     {CURRENCY_SYMBOL}
                   </span>
@@ -230,11 +222,10 @@ export const NewTransactionModal = ({
                         inputMode="decimal"
                         placeholder="0.00"
                         autoFocus
-                        className={`text-6xl font-semibold w-full text-center bg-transparent border-none focus:ring-0 transition-all duration-300 focus:scale-105 outline-none ${
-                          transactionType === "income"
+                        className={`text-6xl font-semibold w-full text-center bg-transparent border-none focus:ring-0 transition-all duration-300 focus:scale-105 outline-none ${transactionType === "income"
                             ? "text-emerald-600"
                             : "text-neutral-800"
-                        }`}
+                          }`}
                       />
                     )}
                   />
@@ -296,9 +287,8 @@ export const NewTransactionModal = ({
               <input
                 {...register("description")}
                 placeholder="Short note about this transaction"
-                className={`input-atelier px-4 py-3 rounded-xl text-sm bg-neutral-50 ${
-                  errors.description ? "border-rose-200" : ""
-                }`}
+                className={`input-atelier px-4 py-3 rounded-xl text-sm bg-neutral-50 ${errors.description ? "border-rose-200" : ""
+                  }`}
               />
               {errors.description && (
                 <span className="text-rose-500 text-[10px] font-bold">
@@ -341,11 +331,10 @@ export const NewTransactionModal = ({
             <Button
               type="submit"
               disabled={isSubmitting}
-              className={`transition-colors ${
-                transactionType === "income"
+              className={`transition-colors ${transactionType === "income"
                   ? "bg-emerald-600 hover:bg-emerald-700 active:bg-emerald-800"
                   : ""
-              }`}
+                }`}
             >
               {isSubmitting ? (
                 "Saving..."
