@@ -102,5 +102,43 @@ export function getTransactionSummary() {
   });
 }
 
+export interface TransactionOverviewWeekly {
+  week_start: string;
+  total_amount: number;
+}
+
+export interface TransactionOverviewDaily {
+  day: string;
+  total_amount: number;
+}
+
+export interface TransactionOverview {
+  Weekly: TransactionOverviewWeekly[];
+  Daily: TransactionOverviewDaily[];
+}
+
+export interface TransactionOverviewResponse {
+  data: TransactionOverview;
+  message: string;
+}
+
+export interface TransactionOverviewFilters {
+  month: number;
+  year: number;
+}
+
+export function getTransactionOverview(filters: TransactionOverviewFilters) {
+  const queryParams = new URLSearchParams({
+    month: filters.month.toString(),
+    year: filters.year.toString(),
+  }).toString();
+
+  return serviceHandler<TransactionOverviewResponse>({
+    method: "GET",
+    baseURL: process.env.NEXT_PUBLIC_API_BASE_URL || "http://localhost:3000",
+    resource: `/v1/transactions/overview?${queryParams}`,
+  });
+}
+
 
 

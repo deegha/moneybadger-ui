@@ -44,7 +44,7 @@ export function fetchCategories() {
   }>({
     method: 'GET',
     baseURL: process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:3000',
-    resource: '/v1/categories?month=3&year=2026',
+    resource: '/v1/categories',
   });
 
   return res;
