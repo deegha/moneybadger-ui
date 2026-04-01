@@ -1,4 +1,4 @@
-import { serviceHandler } from "../serviceHandler";
+import { serviceHandler } from '../serviceHandler';
 
 interface CreateCategoryPayload {
   name: string;
@@ -11,9 +11,9 @@ interface CreateCategoryPayload {
 
 export function createCategory(data: CreateCategoryPayload) {
   return serviceHandler({
-    method: "POST",
-    baseURL: process.env.NEXT_PUBLIC_API_BASE_URL || "http://localhost:3000",
-    resource: "/v1/categories",
+    method: 'POST',
+    baseURL: process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:3000',
+    resource: '/v1/categories',
     body: {
       name: data.name,
       icon: data.icon,
@@ -42,9 +42,9 @@ export function fetchCategories() {
     data: Category[];
     message: string;
   }>({
-    method: "GET",
-    baseURL: process.env.NEXT_PUBLIC_API_BASE_URL || "http://localhost:3000",
-    resource: "/v1/categories",
+    method: 'GET',
+    baseURL: process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:3000',
+    resource: '/v1/categories?month=3&year=2026',
   });
 
   return res;

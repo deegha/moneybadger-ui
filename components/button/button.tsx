@@ -57,12 +57,14 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         {...props}
       >
         {isLoading ? (
-          <div className="w-4 h-4 border-2 border-current border-t-transparent rounded-full animate-spin" />
+          <div className=" w-4 h-4 border-2 border-current border-t-transparent rounded-full animate-spin" />
         ) : (
           <>
             {icon && iconPosition === "left" && <span>{icon}</span>}
             {children}
             {icon && iconPosition === "right" && <span>{icon}</span>}
+          
+            
           </>
         )}
       </button>

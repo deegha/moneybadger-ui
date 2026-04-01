@@ -83,3 +83,24 @@ export function listTransactions(filter: ListTransactionFilters) {
     resource: `/v1/transactions?${queryParams}`,
   });
 }
+
+export interface TransactionSummary {
+  total_income: number;
+  total_expense: number;
+}
+
+export interface TransactionSummaryResponse {
+  data: TransactionSummary;
+  message: string;
+}
+
+export function getTransactionSummary() {
+  return serviceHandler<TransactionSummaryResponse>({
+    method: "GET",
+    baseURL: process.env.NEXT_PUBLIC_API_BASE_URL || "http://localhost:3000",
+    resource: `/v1/transactions/summary`,
+  });
+}
+
+
+
